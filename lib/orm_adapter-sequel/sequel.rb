@@ -101,6 +101,11 @@ class Sequel::Model
         obj.save
       end # transaction
     end
+  
+    # @see OrmAdapter::Base#destroy
+    def destroy(object)
+      object.destroy if valid_object?(object)
+    end
 
     protected
 
